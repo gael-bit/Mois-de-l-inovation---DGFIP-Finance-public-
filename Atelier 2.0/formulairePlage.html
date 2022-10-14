@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" type="text/css" href="form.css">
+
+  <title>Inscription</title>
+</head>
+
+<body>
+  <header role="banner" id="plage">
+    <h1>Réservation pique-<br>nique du 14 juillet</h1>
+    <h2>Paris plage</h2>
+  </header>
+
+  <nav></nav>
+  <main role="main">
+
+    <article>
+      <!--<h1>Réservation pique-nique du 14 juillet</h1>-->
+      <form action="https://www.google.fr/" enctype="multipart/form-data" method="POST">
+        <p>Les champs dont les <span class="red">intitulés</span> sont <span class="red">en rouge</span> sont
+          obligatoires</p>
+        <div class="erreur"></div>
+
+        <div>
+          <label for="nom" class="red">Nom de l'enfant</label>
+          <input type="text" name="nom" id="-nom">
+        </div>
+        <div>
+          <label for="prenom">
+            Son prénom
+          </label>
+          <input type="text" name="prenom" id="prenom">
+        </div>
+        <div>
+          <label for="nb" class="red">
+            Son âge
+          </label>
+          <input type="number" value="10" id="nb" min="10" max="17" name="nb"><span class="decal10 gris">10 ans minimum
+            - 17 ans maximum</span>
+        </div>
+        <div>
+          <label for="mail">Votre e-mail</label>
+          <input type="mail" name="mail" id="mail">
+        </div>
+
+        <div>
+          <label for="tel" class="red">
+            Votre numéro de téléphone
+          </label>
+          <input type="tel" name="tel" id="tel"><span class="decal10 gris" id="portable">Portable uniquement</span>
+        </div>
+        <div class="">
+          <h2 id="">Aliment(s) préféré(s)</h2>
+          <div role="group" aria-labelledby="pref">
+            <div>
+              <input type="checkbox" id="Crevettes" name="Crevettes">
+              <label for="Crevettes">Crevettes</label>
+            </div>
+
+            <div>
+              <input type="checkbox" id="Surimi" name="Surimi">
+              <label for="Surimi">Surimi</label>
+            </div>
+
+            <div>
+              <input type="checkbox" id="Huitres" name="Huitres">
+              <label for="Huitres">Huitres</label>
+            </div>
+
+            <div>
+              <label class="autre" for="autre">Autre</label>
+              <input type="text" name="autre" id="autre">
+            </div>
+          </div>
+        </div>
+        <div class="button" onclick="window.location='form2.html'" id="submit">Valider</div>
+      </form>
+
+      <script>
+        (function () {
+          flag = 1;
+          var form = document.getElementsByTagName('form')[0];
+          var test = function (e, input) {
+            if (input.nodeName !== 'INPUT' || input.className !== 'required' || ['text', 'password'].indexOf(input.type) === -1) {
+              return;
+            }
+            if (!input.value.trim()) {
+              document.getElementsByClassName('erreur')[0].textContent = 'Données saisies invalides.';
+              flag = flag * 0;
+            }
+          };
+          form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            document.getElementsByClassName('erreur')[0].textContent = '';
+            flag = 1;
+
+            for (var i = 0; i < this.length; i++) {
+              test(e, this[i]);
+            };
+            if (flag == 1) { window.location = "form2.html" }
+
+          }, false);
+
+        })();
+      </script>
+    </article>
+
+
+  </main>
+  <footer role="contentinfo"></footer>
+
+
+</body>
+
+</html>
