@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" type="text/css" href="../css/form.css">
+
+  <title>Réservation 14.07.2023 | Picnic au bord de mer</title>
+</head>
+
+<body>
+  <header role="banner">
+
+    <h1>Réservation pique-<br>nique du 14 juillet 2023
+    </h1>
+    <h2>Rouen sur mer</h2>
+  </header>
+
+  <nav></nav>
+  <main role="main">
+
+    <article>
+
+      <form action="https://www.google.fr/" enctype="multipart/form-data" method="POST">
+        <p aria-hidden="true">Les champs dont l'intitulé est précédés d'un <span class="red">*</span> sont obligatoires
+        </p>
+        <div class="erreur"></div>
+        <div class="ok">
+          <div>
+            <label for="nom"><span aria-hidden="true" class="red">*</span>Nom de l'enfant</label>
+            <input type="text" name="nom" id="nom" required>
+          </div>
+          <div>
+            <label for="prenom">
+              Son prénom
+            </label>
+            <input type="text" name="prenom" id="prenom">
+          </div>
+          <div>
+            <label for="nb">
+              <span aria-hidden="true" class="red">*</span>Son âge
+            </label>
+            <input type="number" value="8" min="8" max="17" id="nb" name="nb" required
+              aria-describedby="plage-age"><span class="decal10 gris" id="plage-age">8 ans minimum - 17 ans
+              maximum</span>
+          </div>
+          <div>
+            <label for="mail">Votre e-mail</label>
+            <input type="email" name="mail" id="mail">
+          </div>
+
+          <div>
+            <label for="tel">
+              <span aria-hidden="true" class="red">*</span>Votre numéro de téléphone
+            </label>
+            <input type="tel" required name="tel" id="tel" aria-describedby="portable"><span class="decal10 gris"
+              id="portable">Portable uniquement</span>
+          </div>
+        </div>
+        <div class="">
+          <h2 id="pref">Allergies connues</h2>
+          <div role="group" aria-labelledby="pref">
+            <div>
+              <input type="checkbox" id="Crevettes" name="Crevettes">
+              <label for="Crevettes">Crevettes</label>
+            </div>
+
+            <div>
+              <input type="checkbox" id="Surimi" name="Surimi">
+              <label for="Surimi">Surimi</label>
+            </div>
+
+            <div>
+              <input type="checkbox" id="Huitres" name="Huitres">
+              <label for="Huitres">Huitres</label>
+            </div>
+
+            <div class="ok">
+              <label class="autre" for="autre">Autre</label>
+              <input type="text" name="autre" id="autre">
+            </div>
+          </div>
+        </div>
+        <div><input type="submit" value="Inscrire mon enfant" id="submit" /></div>
+      </form>
+
+      <script>
+        (function () {
+          flag = 1;
+          var form = document.getElementsByTagName('form')[0];
+          var test = function (e, input) {
+            if (input.nodeName !== 'INPUT' || input.className !== 'required' || ['text', 'password'].indexOf(input.type) === -1) {
+              return;
+            }
+            if (!input.value.trim()) {
+              document.getElementsByClassName('erreur')[0].textContent = 'Données saisies invalides.';
+              flag = flag * 0;
+            }
+          };
+          form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            document.getElementsByClassName('erreur')[0].textContent = '';
+            flag = 1;
+
+            for (var i = 0; i < this.length; i++) {
+              test(e, this[i]);
+            };
+            if (flag == 1) { window.location = "pageDeRedirection.html" }
+
+          }, false);
+
+        })();
+      </script>
+    </article>
+
+
+  </main>
+  <footer role="contentinfo"></footer>
+
+
+</body>
+
+</html>
